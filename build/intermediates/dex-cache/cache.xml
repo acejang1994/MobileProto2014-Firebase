@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/home/james/AndroidStudioProjects/AndroidFirebase/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2-1039d46cc5f117d7031172c76c710db4717eea8d.jar"
+        jar="/home/james/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6"/>
+    <item
+        dex="/home/james/AndroidStudioProjects/AndroidFirebase/app/build/intermediates/pre-dexed/debug/tubesock-0.0.8-0ebbbcf14c16d8bfa6c19324106e1fc37480cf25.jar"
+        jar="/home/james/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.8/7e88ecf193992e8b3f533ebf9be4736052e9d9ed/tubesock-0.0.8.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="7e88ecf193992e8b3f533ebf9be4736052e9d9ed"/>
+    <item
+        dex="/home/james/AndroidStudioProjects/AndroidFirebase/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2-4588994c5ca48d6f3c461d03d8b923f0b84162ba.jar"
+        jar="/home/james/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113"/>
+    <item
+        dex="/home/james/AndroidStudioProjects/AndroidFirebase/app/build/intermediates/pre-dexed/debug/firebase-client-1.0.18-39c9693d4f9b7297f6704f7a1f67ea086d59470c.jar"
+        jar="/home/james/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client/1.0.18/e53444bb614ea01598d3a7d2e1ffccaf71f1ceb4/firebase-client-1.0.18.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e53444bb614ea01598d3a7d2e1ffccaf71f1ceb4"/>
+    <item
+        dex="/home/james/AndroidStudioProjects/AndroidFirebase/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2-7e9978ffac76348f2fe62267cc55470e2dfea48c.jar"
+        jar="/home/james/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b"/>
+
+</pre-dex-items>

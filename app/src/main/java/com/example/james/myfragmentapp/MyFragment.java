@@ -16,7 +16,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by james on 9/11/14.
@@ -43,17 +50,30 @@ public class MyFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_my, container, false);
         final HandlerDatabase handler = new HandlerDatabase(context);
         handler.open();
+
+        final Firebase myFirebaseRef = new Firebase("https://brilliant-torch-5491.firebaseio.com/");
+//        final Firebase myFirebaseRef = ref.child("listChats");
+
+
+        myFirebaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+            }
+            @Override public void onCancelled(FirebaseError error) { }
+        });
+
+
         ListView myListView = (ListView) rootView.findViewById(R.id.my_list_view);
 
-        final ArrayList<Chat> listChats = handler.getAllChats();
+//        final ArrayList<Chat> listChats = handler.getAllChats();
+        final ArrayList<Chat> listChats = new ArrayList<Chat>();
+        final Map<String,Chat> mapChats = new HashMap<String, Chat>();
 
         final ChatAdapter adapter = new ChatAdapter(getActivity(),R.layout.chat_item, listChats);
         myListView.setAdapter(adapter);
 
         final EditText editText = (EditText)rootView.findViewById(R.id.my_edittext);
-
-
-        Log.i("opening database", "Debug");
 
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -123,16 +143,14 @@ public class MyFragment extends Fragment{
                             }
                         })
                         .setIcon(android.R.drawable.ic_dialog_alert)
-
                         .show();
-
-
-
             }
         });
+
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String message = editText.getText().toString();
 
                 Chat chat = new Chat(userName, userName, message);
@@ -141,6 +159,22 @@ public class MyFragment extends Fragment{
 
                 listChats.add(chat);
                 editText.getText().clear();
+
+                mapChats.put("chat", chat);
+                myFirebaseRef.push().setValue(mapChats);
+
+//                myFirebaseRef.child("name").setValue(chat.getName());
+//                myFirebaseRef.child("time stamp").setValue(chat.getTime());
+//                myFirebaseRef.child("message").setValue(chat.getMessage());
+
+                myFirebaseRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+                    }
+                    @Override public void onCancelled(FirebaseError error) { }
+                });
+                Log.i("does this run", "this");
                 adapter.notifyDataSetChanged();
 //                Log.i("debug","button");
 
