@@ -116,7 +116,6 @@ public class HandlerDatabase {
         while (!cursor.isAfterLast()){
             //Get the Chat
             Chat chat = new Chat(
-                    cursor.getString(0),
                     cursor.getString(1),
                     cursor.getString(2)
             );

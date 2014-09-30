@@ -11,8 +11,7 @@ public class Chat {
     private String id, name, message;
     private long date;
 
-    public Chat(String id, String name, String message){
-        this.id = id;
+    public Chat(String name, String message){
         this.name = name;
         this.message = message;
         this.date = System.currentTimeMillis();

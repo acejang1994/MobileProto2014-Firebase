@@ -51,18 +51,11 @@ public class MyFragment extends Fragment{
         final HandlerDatabase handler = new HandlerDatabase(context);
         handler.open();
 
+//        final FirebaseHandler handler1 = new FirebaseHandler("https://brilliant-torch-5491.firebaseio.com/");
+
         final Firebase myFirebaseRef = new Firebase("https://brilliant-torch-5491.firebaseio.com/");
+
 //        final Firebase myFirebaseRef = ref.child("listChats");
-
-
-        myFirebaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
-            }
-            @Override public void onCancelled(FirebaseError error) { }
-        });
-
 
         ListView myListView = (ListView) rootView.findViewById(R.id.my_list_view);
 
@@ -74,6 +67,17 @@ public class MyFragment extends Fragment{
         myListView.setAdapter(adapter);
 
         final EditText editText = (EditText)rootView.findViewById(R.id.my_edittext);
+
+        myFirebaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot child:snapshot.getChildren()){
+                    Chat chat = new Chat(child.child("message").getValue().toString(),child.child("name").getValue().toString());
+                    listChats.add(chat);
+                }
+            }
+            @Override public void onCancelled(FirebaseError error) { }
+        });
 
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -153,27 +157,16 @@ public class MyFragment extends Fragment{
 
                 String message = editText.getText().toString();
 
-                Chat chat = new Chat(userName, userName, message);
-                chat.setId(userName + chat.getTime());
+                Chat chat = new Chat(userName, message);
                 handler.addChatToDatabase(chat);
 
                 listChats.add(chat);
                 editText.getText().clear();
 
-                mapChats.put("chat", chat);
-                myFirebaseRef.push().setValue(mapChats);
 
-//                myFirebaseRef.child("name").setValue(chat.getName());
-//                myFirebaseRef.child("time stamp").setValue(chat.getTime());
-//                myFirebaseRef.child("message").setValue(chat.getMessage());
+                myFirebaseRef.push().setValue(chat);
 
-                myFirebaseRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
-                    }
-                    @Override public void onCancelled(FirebaseError error) { }
-                });
+
                 Log.i("does this run", "this");
                 adapter.notifyDataSetChanged();
 //                Log.i("debug","button");
