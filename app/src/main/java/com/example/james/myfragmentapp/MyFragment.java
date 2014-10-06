@@ -59,34 +59,12 @@ public class MyFragment extends Fragment{
 
         final Firebase myFirebaseRef = new Firebase("https://brilliant-torch-5491.firebaseio.com/");
 
-//        final Firebase myFirebaseRef = ref.child("listChats");
         listChats = new ArrayList<Chat>();
         myListView = (ListView) rootView.findViewById(R.id.my_list_view);
-
-//        final ArrayList<Chat> listChats = handler.getAllChats();
-
 
         loadDatabaseToChatAdapter();
 
         final EditText editText = (EditText)rootView.findViewById(R.id.my_edittext);
-
-
-//        myFirebaseRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot snapshot) {
-//                for (DataSnapshot child:snapshot.getChildren()){
-//                    Chat chat = new Chat(child.child("message").getValue().toString(),child.child("name").getValue().toString());
-//                    if (listChats.size() != 0){
-//                        for (Chat c : listChats)
-//                            if (c.getMessage() == chat.getMessage() && c.getId() == chat.getId()) {
-//                            } else {
-//                                listChats.add(chat);
-//                            }
-//                    }
-//                }
-//            }
-//            @Override public void onCancelled(FirebaseError error) { }
-//        });
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
